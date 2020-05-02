@@ -6,7 +6,7 @@
 #define TopeCursos 10
 /*
 1 listado de alumnos con descripción del curso
-2 listado d cursos con todos sus alumnos
+2 listado de cursos con todos sus alumnos
 3 el usuario elige un curso y listamos todos sus alumnos
 4 cantidad de alumnos que cursan java
 5 sumatoria de horas de cada curso en funciónn de los alumnos que lo cursan
@@ -15,9 +15,6 @@
 6 el promedio de nota2 para los alumnos de un curso elegido por el usuario
 7 el curso más elegido
 */
-
-
-
 
 int main()
 {
