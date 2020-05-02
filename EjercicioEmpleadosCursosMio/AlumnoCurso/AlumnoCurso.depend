@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1588401905 source:c:\proyectos\c\ejercicios_desde_clase\struct_coordinados\ejercicioempleadoscursosmio\alumnocurso\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Libreria.c"
+
+1588401905 c:\proyectos\c\ejercicios_desde_clase\struct_coordinados\ejercicioempleadoscursosmio\alumnocurso\libreria.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Libreria.h"
+
+1588401842 c:\proyectos\c\ejercicios_desde_clase\struct_coordinados\ejercicioempleadoscursosmio\alumnocurso\libreria.h
+

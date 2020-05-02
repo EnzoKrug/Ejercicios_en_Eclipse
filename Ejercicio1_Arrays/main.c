@@ -7,7 +7,6 @@
  Description : Hello World in C, Ansi-style
  ============================================================================
  */
-
 /*
 *   EJERCICIO DE ARRAYS Y FUNCIONES
 *	de un array de n elementos enteros debemos obtener:
@@ -36,55 +35,100 @@
 
 #define T 10
 
+int EsNumerico(/*char mensaje[]*/int auxiliar);
+
 int ValidarNumeroExistenteInt(int arrayParametro[], int tam, int auxiliar);
 
-void MostrarArray(char mensaje[], int arrayParametro[], int tam);
+int MostrarArray(char mensaje[], int arrayParametro[], int tam);
 
 int main()
 {
     system("color F0"); //Manera para cambiar de color la consola.
+
 	int arrayNumeros[10]={2,66,6,7,2,4,7,2,2,4};
 
 	int valorDeRetorno;
-	int auxiliarInt=8;
+	int auxiliarInt;
 
-	MostrarArray("El numero #", arrayNumeros, T);
+	valorDeRetorno = MostrarArray("El numero #", arrayNumeros, T);
 
-	//printf("\n\nLos numeros ya están cargados, ingrese alguno, para ver si existe o no: \n\n");
-	//scanf("%d",&auxiliarInt);
-	valorDeRetorno = ValidarNumeroExistenteInt(arrayNumeros, T, auxiliarInt );
+	printf("\n\nLos numeros ya estan cargados, ingrese algun numero para ver si existe o no: \n\n");
+	scanf("%d",&auxiliarInt);
+
+    valorDeRetorno = EsNumerico(/*"\nERROR. Reingrese un numero:\n"*/auxiliarInt);
+    if(valorDeRetorno == 0)
+    {
+        printf("Es un numero!!! \n");
+        valorDeRetorno = ValidarNumeroExistenteInt(arrayNumeros, T, auxiliarInt);
+        if(valorDeRetorno == 0)
+        {
+            printf("El %d existe!!", auxiliarInt);
+        }
+        else
+        {
+            //if(valorDeRetorno == 1)
+
+                printf("No se ah encontrado el %d en los numeros cargados.", auxiliarInt);
+
+        }
+    }
+    else
+    {
+            if(valorDeRetorno == 1)
+            {
+                    while(!(auxiliarInt > '0' || auxiliarInt < '9'))
+                    {
+                        printf("ERROR. Reingrese: \n");
+                        scanf("%d",&auxiliarInt);
+                    }
+
+                    valorDeRetorno = ValidarNumeroExistenteInt(arrayNumeros, T, auxiliarInt);
+                    if(valorDeRetorno == 0)
+                    {
+                        printf("El %d existe!!", auxiliarInt);
+                    }
+                    else
+                    {
+                        //if(valorDeRetorno == 1)
+
+                        printf("No se ah encontrado el %d en los numeros cargados.", auxiliarInt);
+                    }
+            }
+    }
+	/*valorDeRetorno = ValidarNumeroExistenteInt(arrayNumeros, T, auxiliarInt );
 	if(valorDeRetorno == 0)
 	{
 		printf("El %d existe!!", auxiliarInt);
 	}
-	else if(valorDeRetorno == 1)
-		{
-			printf("No se ah encontrado el %d en los numeros cargados.", auxiliarInt);
-		}
 	else
 	{
-		printf("fffff");
-	}
+        if(valorDeRetorno == 1)
+        {
+            printf("No se ah encontrado el %d en los numeros cargados.", auxiliarInt);
+        }
+    }
+    */
+	printf("\nvalor de retorno: %d\n", valorDeRetorno);
     system("pause");
+
 	return EXIT_SUCCESS;
 }
 
-void MostrarArray(char mensaje[], int arrayParametro[], int tam)
+int MostrarArray(char mensaje[], int arrayParametro[], int tam)
 {
-	//int retorno = -1;
+	int retorno = -1;
 	int i;
 
 	if(arrayParametro != NULL && tam >= 0)
 	{
-		//retorno = 0;
+		retorno = 0;
 		for(i=0;i<tam;i++)
 		{
 			printf("%s%d: %3d\n",mensaje, i, arrayParametro[i]);
 		}
 	}
-	//return retorno;
+	return retorno;
 }
-
 
 int ValidarNumeroExistenteInt(int arrayParametro[], int tam, int auxiliar)
 {
@@ -97,16 +141,37 @@ int ValidarNumeroExistenteInt(int arrayParametro[], int tam, int auxiliar)
 		{
 			if(arrayParametro[i] == auxiliar)
 			{
-				retorno = 1;
+				retorno = 0;
+				break;
 			}
 			else
 			{
-				if(arrayParametro[i] != auxiliar)
-				{
-					retorno = 0;
-				}
+                retorno = 1;
 			}
 		}
 	}
 	return retorno;
+}
+
+int EsNumerico(/*char mensajeError[]*/ int auxiliar)
+{
+    int retorno = -1;
+
+
+    if(auxiliar > '0' || auxiliar < '9')
+    {
+        retorno = 0; // Es NUMERICO
+    }
+    else
+    {
+        retorno = 1; // No es NUMERICO
+        /*while(!(auxiliar > '0' || auxiliar < '9'))
+        {
+            printf("%s", mensajeError);
+            scanf("%d", &auxiliar);
+        }
+        retorno = 0;*/
+    }
+
+    return retorno;
 }
